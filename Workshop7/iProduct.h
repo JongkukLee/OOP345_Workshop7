@@ -6,6 +6,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <iomanip>
+#define VERBOSE 0
 
 namespace w7 {
 
@@ -26,7 +28,9 @@ namespace w7 {
     }
     virtual void display(std::ostream& os) const
     {
-      os << this->number << " " << this->cost;
+      os.setf(std::ios::fixed);
+      os.precision(2);
+      os << std::setw(10) << this->number << std::setw(10) << this->cost;
     }
     virtual void setNumber(size_t num)
     {
@@ -83,7 +87,7 @@ namespace w7 {
   {
     std::string line;
     std::getline(ins, line);
-    std::cout << "Line -->" << line << "<--" << std::endl;
+    if(VERBOSE) std::cout << "Line -->" << line << "<--" << std::endl;
 
     if (line.find("H") != std::string::npos || line.find("P") != std::string::npos)
     {
@@ -91,19 +95,19 @@ namespace w7 {
       // set the number of product
       std::string numstr = "";
       for (; i < line.size() && line[i] != ' '; i++) numstr += line[i];
-      std::cout << "number[" << numstr << "]";
+      if (VERBOSE) std::cout << "number[" << numstr << "]";
       i++;
       // set the cost of product
       std::string coststr = "";
       for (; i < line.size() && line[i] != ' '; i++) coststr += line[i];
-      std::cout << "cost[" << coststr << "]";
+      if (VERBOSE) std::cout << "cost[" << coststr << "]";
       i++;
       // set the status of product
       std::string statusstr = "";
       for (; i < line.size() && line[i] != '\n'; i++) statusstr += line[i];
       if (statusstr == "H") statusstr = "HST";
       else statusstr = "PST";
-      std::cout << "taxstatus[" << statusstr << "]\n";
+      if (VERBOSE) std::cout << "taxstatus[" << statusstr << "]\n";
 
       iProduct* prd = new TaxableProduct(std::stoi(numstr), std::stod(coststr), statusstr);
 
@@ -115,12 +119,12 @@ namespace w7 {
       // set the number of product
       std::string numstr = "";
       for (; i < line.size() && line[i] != ' '; i++) numstr += line[i];
-      std::cout << "number[" << numstr << "]";
+      if (VERBOSE) std::cout << "number[" << numstr << "]";
       i++;
       // set the cost of product
       std::string coststr = "";
       for (; i < line.size() && (line[i] != ' ' || line[i] != '\n'); i++) coststr += line[i];
-      std::cout << "cost[" << coststr << "]\n";
+      if (VERBOSE) std::cout << "cost[" << coststr << "]\n";
 
       iProduct* prd = new Product(std::stoi(numstr), std::stod(coststr));
 

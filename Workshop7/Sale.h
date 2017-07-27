@@ -7,6 +7,7 @@
 #include <string>
 #include <typeinfo>
 #include "iProduct.h"
+#define VERBOSE 0
 
 namespace w7 {
 
@@ -22,7 +23,7 @@ namespace w7 {
         std::cerr << filename << " cannot be open!" << std::endl;
       else
       {
-        std::cout << filename << " is open!" << std::endl;
+        if (VERBOSE) std::cout << filename << " is open!" << std::endl;
         while (!ins.eof())
           salesProducts.push_back(readProduct(ins));
       }
@@ -48,7 +49,7 @@ namespace w7 {
         std::cout << *e << std::endl;
         totalCost += e->getCharge();
       }
-      os << "Total    " << totalCost << "\n";
+      os << "     Total    " << totalCost << "\n";
     }
   };
 }
