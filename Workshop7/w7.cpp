@@ -1,3 +1,16 @@
+// OOP345 Workshop 7: STL Containers
+// File w7.cpp
+// Version 1.0
+// Date 2017-07-14
+// Author Jongkuk Lee ( jlee465@myseneca.ca, 127730158 )
+// Description
+//      This file is a test file for Workshop7
+//
+// Revision History
+///////////////////////////////////////////////////////////
+// Name     Date    Reason
+//
+///////////////////////////////////////////////////////////
 #include <iostream>
 #include <string>
 #include "Sale.h"

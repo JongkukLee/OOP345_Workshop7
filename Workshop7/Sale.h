@@ -1,13 +1,26 @@
+// OOP345 Workshop 7: STL Containers
+// File Sale.h
+// Version 1.0
+// Date 2017-07-14
+// Author Jongkuk Lee ( jlee465@myseneca.ca, 127730158 )
+// Description
+//  contains the list of products sold to the customer
+//
+// Revision History
+///////////////////////////////////////////////////////////
+// Name     Date    Reason
+//
+///////////////////////////////////////////////////////////
 #ifndef W7_SALE_H_
 #define W7_SALE_H_
 
 #include <iostream>
 #include <fstream>
-#include <Vector>
+#include <vector>
 #include <string>
 #include <typeinfo>
 #include "iProduct.h"
-#define VERBOSE 0
+#define VERBOSE 0 
 
 namespace w7 {
 

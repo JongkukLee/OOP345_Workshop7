@@ -18,12 +18,6 @@
     <ClInclude Include="iProduct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Product.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TaxableProduct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Sale.h">
       <Filter>Header Files</Filter>
     </ClInclude>

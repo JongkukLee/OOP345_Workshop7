@@ -1,13 +1,26 @@
+// OOP345 Workshop 7: STL Containers
+// File iProduct.h
+// Version 1.0
+// Date 2017-07-14
+// Author Jongkuk Lee ( jlee465@myseneca.ca, 127730158 )
+// Description
+//  each object describes a single product sold to the customer
+//
+// Revision History
+///////////////////////////////////////////////////////////
+// Name     Date    Reason
+//
+///////////////////////////////////////////////////////////
 #ifndef W7_I_PRODUCT_H_
 #define W7_I_PRODUCT_H_
-
-// Workshop 7 - STL Containers
-// iProduct.h
 
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#define VERBOSE 0
+#include <string>
+#define VERBOSE 0 
+
+using namespace std;
 
 namespace w7 {
 
@@ -64,6 +77,7 @@ namespace w7 {
     }
     virtual void display(std::ostream& os) const
     {
+
       Product::display(os);
       os << " " << this->taxstatus;
     }
@@ -85,9 +99,9 @@ namespace w7 {
   // memory for the corresponding iProduct object
   iProduct* readProduct(std::ifstream& ins)
   {
-    std::string line;
-    std::getline(ins, line);
-    if(VERBOSE) std::cout << "Line -->" << line << "<--" << std::endl;
+    string line;
+    getline(ins, line);
+    if(VERBOSE) std::cout << "Line -->" << line << "<--" << endl;
 
     if (line.find("H") != std::string::npos || line.find("P") != std::string::npos)
     {
@@ -105,7 +119,7 @@ namespace w7 {
       // set the status of product
       std::string statusstr = "";
       for (; i < line.size() && line[i] != '\n'; i++) statusstr += line[i];
-      if (statusstr == "H") statusstr = "HST";
+      if (statusstr.find("H") != std::string::npos) statusstr = "HST";
       else statusstr = "PST";
       if (VERBOSE) std::cout << "taxstatus[" << statusstr << "]\n";
 
@@ -119,12 +133,12 @@ namespace w7 {
       // set the number of product
       std::string numstr = "";
       for (; i < line.size() && line[i] != ' '; i++) numstr += line[i];
-      if (VERBOSE) std::cout << "number[" << numstr << "]";
+      //if (VERBOSE) cout << "number[" << numstr << "]";
       i++;
       // set the cost of product
       std::string coststr = "";
       for (; i < line.size() && (line[i] != ' ' || line[i] != '\n'); i++) coststr += line[i];
-      if (VERBOSE) std::cout << "cost[" << coststr << "]\n";
+      //if (VERBOSE) cout << "cost[" << coststr << "]\n";
 
       iProduct* prd = new Product(std::stoi(numstr), std::stod(coststr));
 
